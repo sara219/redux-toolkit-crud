@@ -1,38 +1,72 @@
-.App {
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(233, 235, 235);
   text-align: center;
+  margin-top: 5rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body,
+h1,
+h2,
+button,
+input {
+  font-family: 'Comfortaa', cursive;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.form {
+  margin-top: 2rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.form input,
+button {
+  width: 200px;
+  height: 40px;
+  border: 1px solid #056854ed;
+  border-radius: 5px;
+  margin: 2px;
+  padding: 10px;
+  outline: none;
+}
+
+.form button {
+  background: #056854;
+  color: aliceblue;
+
+  font-weight: bolder;
+}
+
+/* ----------------- */
+
+.posts {
+  margin-top: 2rem;
+}
+.post {
+  width: 60%;
+  background: #fff;
+  border: 1px solid #666;
+  padding: 10px;
+  margin: auto;
+}
+
+.post button {
+  width: 150px;
+  display: inline-block;
+  margin: 2rem 0 0 1rem;
+  font-weight: bold;
+  border: none;
+}
+
+.update {
+  background-color: rgb(230, 230, 230);
+  color: rgb(0, 119, 255);
+}
+
+.delete {
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  background: rgb(205, 91, 91);
 }
