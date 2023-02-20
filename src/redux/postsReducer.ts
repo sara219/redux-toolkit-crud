@@ -1,12 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "./store";
+import { Post } from "../interface/Post";
 
 export interface PostState {
-    post: Array<string>
+    items: Post[]
 }
 
 const initialState: PostState = {
-    post: []
+    items: []
 }
 
 
@@ -15,12 +18,11 @@ export const postsSlice = createSlice({
     initialState,
     reducers: {
         addPost: function(state, action){
-            console.log(action,1111);
-            
-            // state.post.push()
+            state.items.push(action.payload)
         }
     }
 })
+
 
 export const { addPost } = postsSlice.actions
 export default postsSlice.reducer

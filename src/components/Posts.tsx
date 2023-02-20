@@ -1,10 +1,13 @@
 import React, { ChangeEvent, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { Post } from '../interface/Post'
 import { addPost } from '../redux/postsReducer'
+import { RootState } from '../redux/store'
 
 export const Posts = () => {
   const [title, setTitle] = useState<string>('')
   const [desc, setDesc] = useState<string>('')
+  const postsList = useSelector((state: RootState) => state.posts.items)
 
   const dispatch = useDispatch()
 
@@ -17,7 +20,12 @@ export const Posts = () => {
   }
 
   const addPostItem = () => {
-    dispatch(addPost({ id: 1, title, desc}))
+    const newPost: Post = {
+      id: 1,
+      title,
+      desc,
+    }
+    dispatch(addPost(newPost))
   }
 
   return (
@@ -39,12 +47,16 @@ export const Posts = () => {
       </div>
 
       <div className='posts'>
-        <div className='post'>
-          <h2>POST TITLE</h2>
-          <p>POST DESC</p>
-          <button className='update'>Update</button>
-          <button className='delete'>Delete</button>
-        </div>
+        {postsList.length > 0
+          ? postsList.map((post) => (
+              <div className='post' key={post.id}>
+                <h2>{post.title}</h2>
+                <p>{post.desc}</p>
+                <button className='update'>Update</button>
+                <button className='delete'>Delete</button>
+              </div>
+            ))
+          : 'there is no posts'}
       </div>
     </div>
   )
