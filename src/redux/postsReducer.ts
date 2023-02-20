@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "./store";
+// import type { PayloadAction } from "@reduxjs/toolkit";
 import { Post } from "../interface/Post";
 
 export interface PostState {
