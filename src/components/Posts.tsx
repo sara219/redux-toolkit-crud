@@ -7,6 +7,11 @@ import { RootState } from '../redux/store'
 export const Posts = () => {
   const [title, setTitle] = useState<string>('')
   const [desc, setDesc] = useState<string>('')
+
+  // hook to update post
+  const [edit, setEdit] = useState<boolean>(false)
+  const [currentId, setCurrentId] = useState<number>()
+
   const postsList = useSelector((state: RootState) => state.posts.items)
 
   const dispatch = useDispatch()
@@ -60,13 +65,29 @@ export const Posts = () => {
               <div className='post' key={post.id}>
                 <h2>{post.title}</h2>
                 <p>{post.desc}</p>
-                <button className='update'>Update</button>
+                <button
+                  onClick={() => {
+                    setEdit(true)
+                    setCurrentId(post.id)
+                  }}
+                  className='update'
+                >
+                  Update
+                </button>
                 <button
                   onClick={() => dispatch(deletePost(post.id))}
                   className='delete'
                 >
                   Delete
                 </button>
+
+                {edit && currentId === post.id && (
+                  <>
+                    <input type='text' placeholder='Update Title' />
+                    <input type='text' placeholder='Update Description' />
+                    <button className='update-post'>Update Post</button>
+                  </>
+                )}
               </div>
             ))
           : 'there is no posts'}
