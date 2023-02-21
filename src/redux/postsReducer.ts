@@ -1,26 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit";
-// import type { PayloadAction } from "@reduxjs/toolkit";
-import { Post } from "../interface/Post";
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { Post } from '../interface/Post'
 
 export interface PostState {
-    items: Post[]
+  items: Post[]
 }
 
 const initialState: PostState = {
-    items: []
+  items: [],
 }
 
-
 export const postsSlice = createSlice({
-    name: 'posts',
-    initialState,
-    reducers: {
-        addPost: function(state, action){
-            state.items.push(action.payload)
-        }
-    }
+  name: 'posts',
+  initialState,
+  reducers: {
+    addPost: function(state, action) {
+      state.items.push(action.payload)
+    },
+    deletePost: function(state, action: PayloadAction<number>) {
+      state.items = state.items.filter((post) => post.id !== action.payload)
+    },
+  },
 })
 
-
-export const { addPost } = postsSlice.actions
+export const { addPost, deletePost } = postsSlice.actions
 export default postsSlice.reducer
