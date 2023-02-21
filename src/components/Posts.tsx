@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Post } from '../interface/Post'
-import { addPost } from '../redux/postsReducer'
+import { addPost, deletePost } from '../redux/postsReducer'
 import { RootState } from '../redux/store'
 
 export const Posts = () => {
@@ -21,8 +21,6 @@ export const Posts = () => {
 
   const generateRandomId = (): number => {
     const randomNo = Math.floor(Math.random() * 10000000)
-    console.log(randomNo)
-
     return randomNo
   }
 
@@ -63,7 +61,12 @@ export const Posts = () => {
                 <h2>{post.title}</h2>
                 <p>{post.desc}</p>
                 <button className='update'>Update</button>
-                <button className='delete'>Delete</button>
+                <button
+                  onClick={() => dispatch(deletePost(post.id))}
+                  className='delete'
+                >
+                  Delete
+                </button>
               </div>
             ))
           : 'there is no posts'}
