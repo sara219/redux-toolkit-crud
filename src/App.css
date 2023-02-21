@@ -51,6 +51,8 @@ button {
   border: 1px solid #666;
   padding: 10px;
   margin: auto;
+  margin-bottom: 2rem;
+  border-radius: 8px;
 }
 
 .post button {
