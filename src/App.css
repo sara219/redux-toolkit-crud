@@ -22,7 +22,7 @@ input {
   margin-top: 2rem;
 }
 
-.form input,
+input,
 button {
   width: 200px;
   height: 40px;
@@ -58,7 +58,7 @@ button {
 .post button {
   width: 150px;
   display: inline-block;
-  margin: 2rem 0 0 1rem;
+  margin: 2rem 0 1rem 1rem;
   font-weight: bold;
   border: none;
 }
@@ -71,4 +71,10 @@ button {
 .delete {
   color: white;
   background: rgb(205, 91, 91);
+}
+
+
+.update-post {
+  background-color: #044135;
+  color: #fff;
 }
