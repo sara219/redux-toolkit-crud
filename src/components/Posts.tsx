@@ -19,13 +19,23 @@ export const Posts = () => {
     setDesc(e.target.value)
   }
 
+  const generateRandomId = (): number => {
+    const randomNo = Math.floor(Math.random() * 10000000)
+    console.log(randomNo)
+
+    return randomNo
+  }
+
   const addPostItem = () => {
     const newPost: Post = {
-      id: 1,
+      id: generateRandomId(),
       title,
       desc,
     }
     dispatch(addPost(newPost))
+
+    setTitle('')
+    setDesc('')
   }
 
   return (
